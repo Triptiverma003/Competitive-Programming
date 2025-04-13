@@ -1,1 +1,19 @@
-
+#include <iostream>
+using namespace std;
+ 
+int main() {
+	int c = 0;
+	int n;
+	cin>>n;
+	while(n--){
+	string x;
+	cin>>x;
+	if(x == "++X" || x == "X++"){
+		c+=1;
+	}else if(x == "--X" || x == "X--"){
+		c-=1;
+		}
+	}
+	cout<<c<<endl;
+	return 0;
+}
