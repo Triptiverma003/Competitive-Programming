@@ -1,0 +1,16 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+	string a;
+	cin>>a;
+	for(auto &x : a){
+		if(x > '4'){
+			x = '9'-x+'0';
+		}
+	}
+	if(a[0] == '0'){
+		a[0] = '9';
+	}
+	cout<<a;
+	return 0;
+}
