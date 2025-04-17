@@ -1,1 +1,17 @@
-
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+	int t;
+	cin>>t;
+	int current = 0;
+	int capacity = 0;
+	while(t--){
+		int n;
+		int m;
+		cin>>n>>m;
+		current -= n;
+		current+=m;
+		capacity = max(current , capacity);
+	}
+	cout<<capacity;
+}
