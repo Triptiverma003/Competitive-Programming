@@ -1,0 +1,41 @@
+class Solution {
+  public:
+
+    bool isPossible(vector<int>arr , int N , int M , int sol){
+      int pageSum = 0;
+      int c = 1;
+      for(int i = 0; i<N; i++){
+        if(arr[i] > sol){
+          return false;
+        }
+        if(pageSum + arr[i] > sol){
+          c++;
+          pageSum = arr[i];
+          if(c > M){
+            return false;
+          }
+        }else{
+          pageSum += arr[i];
+        }
+      }
+      return true;
+    }
+    long long findPages(int n, vector<int>&arr, int m) {
+       if(m > n){
+        return -1;
+       }
+      int start = 0;
+      int end = std::accumulate(arr.begin(), arr.end(), 0LL);
+      int ans = 0;
+      while(start <= end){
+        int mid = (start + end)/2;
+        if(isPossible(arr , n , m , mid)){
+          ans = mid;
+          end = mid-1;
+        }else{
+          start = mid+1;
+        }
+      }
+      return ans;
+    }
+};
