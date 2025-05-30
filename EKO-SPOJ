@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int eko(vector<int>& trees, int m , int height){
+        int woods = 0;
+        for(int tree : trees){
+            if(tree > height){
+                woods+=tree-height;
+            }
+        }
+        return woods>=m;
+    }
+    int maxSawHeight(vector<int>& trees, int m) {
+        // Placeholder logic for EKO problem
+        int start = 0; int res = 0;
+        int end = *max_element(trees.begin() , trees.end());
+        while(start <= end){
+            int mid = start+(end-start)/2;
+            if(eko(trees , m , mid)){
+                res = mid;
+                start = mid+1;
+            }else{
+                end = mid-1;
+            }
+        }
+        return res;
+    }
+};
