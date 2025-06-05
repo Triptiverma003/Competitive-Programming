@@ -1,0 +1,19 @@
+int Solution::rowWithMaxOnes(const vector<vector<int>>& mat) {
+    int rowIndex = -1;
+    int maxCount = 0;
+    int R = mat.size();
+    int C = mat[0].size();
+    for(int i = 0; i<R; i++){
+        int count = 0;
+        for(int j = 0; j<C; j++){
+            if(mat[i][j] == 1){
+                count++;
+            }
+        }
+     if(count > maxCount){
+        maxCount = count;
+        rowIndex = i;
+     }
+    }
+    return rowIndex;
+}
