@@ -1,0 +1,22 @@
+class Solution {
+public:
+    string ans = "";
+
+    void exp(const string& s, int start, int end) {
+        while (start >= 0 && end < s.size() && s[start] == s[end]) {
+            if (end - start + 1 > ans.size()) {
+                ans = s.substr(start, end - start + 1);
+            }
+            start--;
+            end++;
+        }
+    }
+
+    string longestPalindrome(const string& s) {
+        for (int i = 0; i < s.size(); i++) {
+            exp(s, i, i);     // Odd length
+            exp(s, i, i + 1); // Even length
+        }
+        return ans;
+    }
+};
