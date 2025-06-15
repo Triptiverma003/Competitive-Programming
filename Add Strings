@@ -1,0 +1,10 @@
+class Solution {
+public:
+    string addStrings(string num1, string num2) {
+        int s = stoi(num1);
+        int t = stoi(num2);
+        int red = s+t;
+        string u = to_string(red);
+        return u;
+    }
+};
