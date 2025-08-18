@@ -1,0 +1,10 @@
+vector<int>printEvenNumbers(vector<int>& arr, int index) {
+    if(index == arr.size()){
+        return {};
+    }
+    vector<int>y =  printEvenNumbers(arr , index+1);
+    if(arr[index] % 2 == 0){
+        y.insert(y.begin() , arr[index]);
+    }
+    return y;
+}
