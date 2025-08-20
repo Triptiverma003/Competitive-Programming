@@ -1,0 +1,33 @@
+class Solution {
+public:
+
+    int solve(int i , vector<int>& nums , int end , vector<int>&dp){
+         if(i > end){
+            return 0;
+        }
+        if(dp[i]!=-1){
+            return dp[i];
+        }
+
+        int incl = 0;
+        int excl = 0;
+        //rob 1st house:
+        incl = nums[i] + solve(i+2 , nums , end , dp);
+        //rob 2nd house
+        excl = solve(i+1 , nums , end , dp);
+
+        return dp[i] = max(incl , excl);
+    }
+    int rob(vector<int>& nums) {
+        int n = nums.size();
+        if (n == 1) return nums[0];
+
+        vector<int>dp1( n , -1);
+        vector<int>dp2( n , -1);
+
+        int in = solve(0 , nums , n-2 , dp1);
+        int out = solve(1 , nums , n-1 , dp2);
+
+        return max(in,out);
+    }
+};
