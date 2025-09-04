@@ -1,0 +1,39 @@
+//Merge two sorted arrays
+#include<bits/stdc++.h>
+using namespace std;
+
+void mergeSort(int size1,int arr[],int size2, int brr[], vector<int>&output){
+	int i =0;
+	int j =0;
+	while(i < size1 && j < size2){
+		if(arr[i] < brr[j]){
+			output.push_back(arr[i]);
+			i++;
+		}else{
+		 output.push_back(brr[j]);	
+		 j++;
+		}
+	}
+	while(i<size1){
+		output.push_back(arr[i]);
+		i++;
+	}
+	while(j<size2){
+		output.push_back(brr[j]);
+		j++;
+	}
+}
+
+
+int main(){
+int size1 = 5;
+int arr[] = {13 , 23, 56 ,78, 87};
+int size2 = 2;
+int brr[] = {98,100};
+vector<int>output;
+mergeSort(size1 , arr , size2 , brr , output);
+for(int i =0; i<7; i++){
+	cout<<output[i]<<" ";
+}
+return 0;
+}
