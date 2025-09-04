@@ -1,0 +1,75 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void merge(int arr[] , int s , int e , int mid){
+	int leftArrayLength = mid-s+1;
+	int rightArrayLength = e-mid;
+	
+	int* arr1 = new int[leftArrayLength];
+	int* arr2 = new int[rightArrayLength];
+	
+	int mainIndex = s;
+	for(int i = 0; i<leftArrayLength; i++){
+		arr1[i] = arr[mainIndex];
+		mainIndex++;
+	}
+	for(int i = 0; i<rightArrayLength; i++){
+		arr2[i] = arr[mainIndex];
+		mainIndex++;
+	}
+	//ab ham karenge compare
+	int i = 0; //arr1
+	int j = 0; //arr2
+	mainIndex = s;
+	while(i<leftArrayLength && j < rightArrayLength){
+		if(arr1[i]<arr2[j]){
+			arr[mainIndex] = arr1[i];
+			i++;
+			mainIndex++;
+		}else{
+			arr[mainIndex] = arr2[j];
+			j++;
+			mainIndex++;
+		}
+	}
+	//copying the remaining
+	while(i<leftArrayLength){
+		arr[mainIndex] = arr1[i];
+		i++;
+		mainIndex++;
+	}
+	while(j<rightArrayLength){
+		arr[mainIndex] = arr2[j];
+		j++;
+		mainIndex++;
+	}
+}
+
+
+void mergeSort(int arr[] , int s , int e){
+	//Base case
+	if(s>=e){
+		return;
+	}
+	int mid = (s+e)/2;
+	//phele sort karo left part ko
+	mergeSort(arr , s, mid);
+	//Sort karo right part ko
+	mergeSort(arr , mid+1 , e);
+	//merge kardo dono ko
+	merge(arr,s,e,mid);
+}
+
+
+int main(){
+	int size = 7;
+	int s = 0;
+	int e = size-1;
+	int arr[] = {7,6,5,4,3,2,1};
+	mergeSort(arr , s , e);
+	for(int i = 0; i < size; i++){
+	 cout << arr[i] << " ";
+	}
+	cout << endl;
+	return 0;
+}
