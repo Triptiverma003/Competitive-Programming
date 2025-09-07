@@ -1,0 +1,21 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void permutationWord(string s , int i){
+	//base case:
+	if(i >= s.length()){
+		cout<<s<<endl;
+		return;
+	}
+	for(int j = i; j<s.size(); j++){
+		swap(s[i] , s[j]);
+		permutationWord(s , i+1);
+	}
+}
+
+int main(){
+	string a = "abc";
+	int i = 0;
+	permutationWord(a , i);
+
+}
