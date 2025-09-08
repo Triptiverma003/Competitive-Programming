@@ -1,0 +1,59 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+bool isSafe(int x, int y, int row, int col, int maze[3][3], bool visited[3][3]) {
+    return (x >= 0 && y >= 0 && x < row && y < col && maze[x][y] == 1 && !visited[x][y]);
+}
+
+void solve(int maze[3][3], int row, int col, int srcX, int srcY, int destX, int destY, string output, bool visited[3][3]) {
+    // Base case
+    if (srcX == destX && srcY == destY) {
+        cout << output << endl;
+        return;
+    }
+
+    // Mark visited
+    visited[srcX][srcY] = true;
+
+    // Up
+    if (isSafe(srcX - 1, srcY, row, col, maze, visited)) {
+        solve(maze, row, col, srcX - 1, srcY, destX, destY, output + 'U', visited);
+    }
+
+    // Down
+    if (isSafe(srcX + 1, srcY, row, col, maze, visited)) {
+        solve(maze, row, col, srcX + 1, srcY, destX, destY, output + 'D', visited);
+    }
+
+    // Right
+    if (isSafe(srcX, srcY + 1, row, col, maze, visited)) {
+        solve(maze, row, col, srcX, srcY + 1, destX, destY, output + 'R', visited);
+    }
+
+    // Left
+    if (isSafe(srcX, srcY - 1, row, col, maze, visited)) {
+        solve(maze, row, col, srcX, srcY - 1, destX, destY, output + 'L', visited);
+    }
+
+    // Backtrack
+    visited[srcX][srcY] = false;
+}
+
+int main() {
+    int maze[3][3] = {
+        {1, 1, 1},
+        {1, 0, 0},
+        {1, 1, 1}
+    };
+
+    int row = 3, col = 3;
+    int srcX = 0, srcY = 0;
+    int destX = row - 1, destY = col - 1;
+
+    bool visited[3][3] = {false};
+
+    if (maze[srcX][srcY] == 1)
+        solve(maze, row, col, srcX, srcY, destX, destY, "", visited);
+
+    return 0;
+}
