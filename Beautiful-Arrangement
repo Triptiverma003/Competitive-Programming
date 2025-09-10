@@ -1,0 +1,23 @@
+class Solution {
+public:
+    void Backtrack(int pos, int n, vector<bool>visited, int &count){
+        //Base Condition
+        if(pos > n){
+            count++;
+            return;
+        }
+        for(int i = 1; i<=n; i++){
+            if(!visited[i] && (i%pos == 0 || pos%i == 0)){
+                visited[i] = true;
+                Backtrack(pos+1, n, visited, count);
+                visited[i] = false;
+            }
+        }
+    }
+    int countArrangement(int n) {
+        vector<bool> visited(n + 1, false);
+        int count = 0;
+        Backtrack(1 , n , visited , count);
+        return count;
+    }
+};
