@@ -1,0 +1,28 @@
+#include <iostream>
+#include<string>
+
+using namespace std;
+
+class Student{
+    int id;
+    int age;
+    string name;
+    int roll;
+    
+public:
+Student(int i,int a,string n, int r):id(i),age(a),name(n),roll(r){}
+
+void sleep(){
+    cout<<"This is the sleeping method "<<this->name<<endl;
+}
+void Age(){
+    cout<<"The age is "<<this->age<<endl;
+    }
+};
+
+int main(){
+    Student A(1,21,"Trip",43);
+    A.sleep();
+    A.Age();
+    return 0;
+}
