@@ -1,0 +1,25 @@
+//Polymorphism
+#include<bits/stdc++.h>
+using namespace std;
+
+class Add {
+    public:
+    int sum(int x, int y){
+        return x+y;
+    }
+    double sum(double x, double y){
+        return x+y;
+    }
+    int sum(int x, int y, int z){
+        return x+y+z;
+    }
+};
+
+int main(){
+    Add add;
+    int x = 1; int y = 2;
+    cout << add.sum(x, y) << endl;
+    cout << add.sum(1.5, 2.3) << endl;
+    cout << add.sum(1, 2, 3) << endl;
+    return 0;
+} // what is function overloading? if the functions have same name but different types or argument type that is called function overloading
