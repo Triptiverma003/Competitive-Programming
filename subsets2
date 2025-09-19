@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<vector<int>> result;
+    
+    void generate(int index, vector<int>& currSubsets, vector<int>& nums) {
+        result.push_back(currSubsets);
+        for (int i = index; i < nums.size(); ++i) {
+            if (i > index && nums[i] == nums[i - 1]) continue;
+            
+            currSubsets.push_back(nums[i]);
+            generate(i + 1, currSubsets, nums);
+            currSubsets.pop_back();
+        }
+    }
+
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        vector<int> currSubsets;
+        generate(0, currSubsets, nums);
+        
+        return result;
+    }
+};
