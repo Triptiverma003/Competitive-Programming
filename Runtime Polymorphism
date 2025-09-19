@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+// Base class
+class Shape {
+public:
+    virtual void draw() {
+        cout << "Generic Drawing..." << endl;
+    }
+};
+
+// Circle
+class Circle : public Shape {
+public:
+    void draw(){
+        cout << "Circle Drawing..." << endl;
+    }
+};
+
+// Rectangle
+class Rectangle : public Shape {
+public:
+    void draw() {
+        cout << "Rectangle Drawing..." << endl;
+    }
+};
+
+// Triangle
+class Triangle : public Shape {
+public:
+    void draw(){
+        cout << "Triangle Drawing..." << endl;
+    }
+};
+
+void Shapedrawing(Shape *s) {
+    s->draw();  // dynamic polymorphism
+}
+
+int main() {
+    Circle c;
+    Rectangle r;
+    Triangle *t = new Triangle();
+
+    Shapedrawing(&c); // Circle
+    Shapedrawing(&r); // Rectangle
+    Shapedrawing(t);  // Triangle
+    return 0;
+}
