@@ -1,0 +1,14 @@
+class Solution {
+public:
+    ListNode* insertBeforeHead(ListNode* head, int X) {
+        ListNode* newNode = new ListNode(X);
+        if(head == NULL){
+            return head;
+        }else{
+            newNode->next = head;
+            head->prev = newNode;
+            head = newNode;
+        }
+        return newNode;
+    }
+};
